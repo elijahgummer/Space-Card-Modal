@@ -1,0 +1,589 @@
+body {
+  background-image: linear-gradient(to top right, #eb9fc0, #b83f8f, #2c2867);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.star {
+  animation: starTwinkle 2s infinite alternate;
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: rotate(5deg);
+  }
+}
+.star:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.star:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.star:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.star:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.star:nth-child(5) {
+  animation-delay: 2s;
+}
+
+@keyframes astronautFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-80px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moonRotate {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes megaphoneRotate {
+  0% {
+    transform: rotate(40deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(40deg);
+  }
+}
+
+.astronaut {
+  animation: astronautFloat 5s infinite;
+  transition: 1s;
+}
+
+.moon {
+  top: -50px;
+  position: absolute;
+  transform: rotate(10deg);
+  left: -70px;
+  opacity: 1;
+  transition: 1s;
+  animation: moonRotate 10s infinite;
+}
+
+.megaphone {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  position: absolute;
+  transform: rotate(40deg);
+  right: -130px;
+  opacity: 1;
+  transition: 1s;
+  animation: megaphoneRotate 10s infinite;
+}
+
+.btn {
+  display: block;
+  color: #fff;
+  margin-top: 300px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.btn label {
+  display: inline-block;
+  width: 100%;
+}
+
+.modal {
+  width: 300px;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transition-delay: 2s;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal .header {
+  background-image: linear-gradient(to top left, #c086e1, #e8abc7);
+  min-height: 200px;
+  border-radius: 30px;
+  position: relative;
+  padding: 20px 20px 100px 20px;
+  opacity: 0;
+  transition: 0.5s;
+  transform: translate(0, 70px);
+}
+
+.modal img {
+  position: absolute;
+}
+
+.modal img:nth-child(1) {
+  top: -30px;
+  width: 90%;
+  left: 5%;
+  opacity: 0;
+  transform: translate(0, 70px);
+  transition: 0.7s;
+}
+
+.modal img:nth-child(2) {
+  top: 170px;
+  transform: rotate(80deg);
+  width: 100px;
+  left: -50px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.modal img:nth-child(3) {
+  transform: rotate(-80deg);
+  bottom: -90px;
+  width: 100px;
+  right: -40px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.modal .content {
+  background-color: #e2f0eb4d;
+  padding: 15px;
+  min-height: 100px;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  color: #eee;
+  font-family: monospace;
+  transform: translate(0, 70px);
+  opacity: 0;
+  transition: 0.5s;
+  transition-delay: 0.2s;
+  text-align: center;
+}
+
+.modal .confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.title {
+    font-size: 24px;
+    width: 100%;
+    color: #986fea;
+}
+
+.modal .content label,
+.modal .content button {
+  display: inline-block;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  margin: 0 10px;
+}
+
+.modal .content label {
+  background-color: #ffffff4d;
+}
+
+.modal .content button {
+  background-color: #986fea;
+}
+
+.modal input[name="setingModal"] {
+  display: none;
+}
+
+.modal:has(input[name="setingModal"]:checked) {
+  transition: 0s;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal:has(input[name="setingModal"]:checked) .header {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.modal:has(input[name="setingModal"]:checked) .content {
+  transition-delay: 0s;
+  opacity: 1;
+  transform: translate(0, -70px);
+}
+
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(1) {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition-delay: 0.3s;
+}
+
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(2) {
+  opacity: 1;
+  transform: rotate(-20deg);
+  transition-delay: 0.5s;
+  top: -20px;
+}
+
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(3) {
+  opacity: 1;
+  transform: rotate(20deg);
+  transition-delay: 0.5s;
+  bottom: 20px;
+}
+
+.modal-toggle:checked ~ .modal .content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.modal-toggle:checked ~ .astronaut,
+.modal-toggle:checked ~ .moon,
+.modal-toggle:checked ~ .megaphone {
+  transform: translateY(-100vh);
+  opacity: 0;
+}
+
+:root {
+  --transition: 0.25s;
+}
+.text::before {
+  content: "";
+  position: absolute;
+  top: -290%;
+  left: 90%;
+  rotate: -45deg;
+  width: 5em;
+  height: 1px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  animation: 4s shootingStar ease-in-out infinite;
+  transition: 1s ease;
+  z-index: -1;
+  animation-delay: 1s;
+  display: none;
+}
+.text::after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: -290%;
+  left: 10%;
+  rotate: -45deg;
+  width: 5em;
+  height: 1px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  animation: 7s shootingStar ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.space-button:hover .text::before,
+.space-button:hover .text::after {
+    display: block;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-55em) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(-70em) translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glowing-stars {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.galaxy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: 140px 20px #fff, 425px 20px #fff, 70px 120px #fff, 20px 130px #fff,
+    110px 80px #fff, 280px 80px #fff, 250px 350px #fff, 280px 230px #fff,
+    220px 190px #fff, 450px 100px #fff, 380px 80px #fff, 520px 50px #fff;
+  z-index: -1;
+  transition: 1.5s ease;
+  animation: 1s glowing-stars linear alternate infinite;
+  animation-delay: 0.4s;
+}
+.galaxy::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  left: -65px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: 490px 330px #fff, 420px 300px #fff, 320px 280px #fff,
+    380px 350px #fff, 546px 170px #fff, 420px 180px #fff, 370px 150px #fff,
+    200px 250px #fff, 80px 20px #fff, 190px 50px #fff, 270px 20px #fff,
+    120px 230px #fff, 350px -1px #fff, 150px 369px #fff;
+  z-index: -1;
+  transition: 2s ease;
+  animation: 1s glowing-stars linear alternate infinite;
+  animation-delay: 0.8s;
+}
+
+button {
+  --cut: 0.1em;
+  --active: 0;
+  --bg: radial-gradient(
+        120% 120% at 126% 126%,
+        hsl(245 calc(var(--active) * 97%) 98% / calc(var(--active) * 0.9)) 40%,
+        transparent 50%
+      )
+      calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+    radial-gradient(
+        120% 120% at 120% 120%,
+        hsl(245 calc(var(--active) * 97%) 70% / calc(var(--active) * 1)) 30%,
+        transparent 70%
+      )
+      calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+    hsl(245 calc(var(--active) * 100%) calc(12% - (var(--active) * 8%)));
+  background: var(--bg);
+  font-size: 2rem;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  padding: 0.9em 1.3em;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  white-space: nowrap;
+  border-radius: 2rem;
+  position: relative;
+  box-shadow: 0 0 calc(var(--active) * 6em) calc(var(--active) * 3em)
+      hsl(245 97% 61% / 0.5),
+    0 0.05em 0 0
+      hsl(245 calc(var(--active) * 97%) calc((var(--active) * 50%) + 30%)) inset,
+    0 -0.05em 0 0 hsl(245 calc(var(--active) * 97%) calc(var(--active) * 10%)) inset;
+  transition: box-shadow 0.25s, scale 0.25s, background 0.25s;
+  scale: calc(1 + (var(--active) * 0.1));
+  transform-style: preserve-3d;
+  perspective: 100vmin;
+  overflow: hidden;
+}
+
+button:active {
+  scale: 1;
+}
+
+.galaxy {
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  overflow: hidden;
+  opacity: var(--active);
+  transition: opacity 0.25s;
+  /*transform-style: preserve-3d;
+	perspective: 100vmin;*/
+  /*	opacity: 0.25;*/
+}
+
+.galaxy__container {
+  position: absolute;
+  inset: 0;
+  opacity: var(--active);
+  transition: opacity 0.25s;
+  -webkit-mask: radial-gradient(white, transparent);
+  mask: radial-gradient(white, transparent);
+}
+
+@-webkit-keyframes move-x {
+  0% {
+    translate: -100px 0;
+  }
+  100% {
+    translate: 100px 0;
+  }
+}
+
+@keyframes move-x {
+  0% {
+    translate: -100px 0;
+  }
+  100% {
+    translate: 100px 0;
+  }
+}
+
+@-webkit-keyframes move-y {
+  0% {
+    transform: translate(0, -50px);
+  }
+  100% {
+    transform: translate(0, 50px);
+  }
+}
+
+@keyframes move-y {
+  0% {
+    transform: translate(0, -50px);
+  }
+  100% {
+    transform: translate(0, 50px);
+  }
+}
+
+.spark {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  rotate: 0deg;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(white, transparent 50%);
+  mask: linear-gradient(white, transparent 50%);
+  -webkit-animation: flip calc(1.8s * 2) infinite steps(2, end);
+  animation: flip calc(1.8s * 2) infinite steps(2, end);
+}
+
+@-webkit-keyframes flip {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes flip {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.spark:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1;
+  top: 0%;
+  left: 50%;
+  z-index: -1;
+  translate: -50% -15%;
+  rotate: 0;
+  transform: rotate(-90deg);
+  opacity: calc((var(--active)) + 0.4);
+  background: conic-gradient(from 0deg, transparent 0 340deg, white 360deg);
+  transition: opacity var 0.25s;
+  -webkit-animation: rotate 1.8s linear infinite both;
+  animation: rotate 1.8s linear infinite both;
+}
+
+.spark:after {
+  content: "";
+  position: absolute;
+  inset: var(--cut);
+  border-radius: 2rem;
+}
+
+.backdrop {
+  position: absolute;
+  inset: var(--cut);
+  background: var(--bg);
+  border-radius: 2rem;
+  transition: background 0.25s;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@supports (selector(:has(:is(+ *)))) {
+  body:has(button:is(:hover, :focus-visible)) {
+    --active: 1;
+    --play-state: running;
+  }
+  .bodydrop {
+    display: none;
+  }
+}
+
+button:is(:hover, :focus-visible) ~ :is(.bodydrop, .particle-pen) {
+  --active: 1;
+  --play-state: running;
+}
+
+button:is(:hover, :focus-visible) {
+  --active: 1;
+  --play-state: running;
+}
+
+.galaxy-button {
+  position: relative;
+}
+
+@-webkit-keyframes float-out {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes float-out {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.text {
+  translate: 2% -6%;
+  letter-spacing: 0.01ch;
+  /*background: linear-gradient(90deg, hsl(0 0% calc((var(--active) * 100%) + 65%)), hsl(0 0% calc((var(--active) * 100%) + 26%)));
+	-webkit-background-clip: text;*/
+  color: hsl(0 0% calc(60% + (var(--active) * 26%)));
+}
